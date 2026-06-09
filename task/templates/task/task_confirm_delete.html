@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Delete Notes</title></head>
+<body style="background:#f5f7fa; font-family:Segoe UI, Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0;">
+
+    <div style="background:white; padding:35px; width:400px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); text-align:center;">
+
+        <h1 style="color:#222; margin-bottom:10px;">Delete Notes</h1>
+        <p style="color:#555;">Are you sure you want to delete these notes?</p>
+        <h3 style="color:#e74c3c;">{{ object.title }}</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" style="padding:12px 25px; background:#e74c3c; color:white; border:none; border-radius:6px; cursor:pointer; font-size:15px; margin-right:10px;">
+                Yes, Delete
+            </button>
+            <a href="/" style="padding:12px 25px; background:#86ccd4; color:white; border-radius:6px; text-decoration:none; font-size:15px;">
+                Cancel
+            </a>
+        </form>
+
+    </div>
+
+</body>
+</html>

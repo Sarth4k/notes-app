@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes Manager</title>
+</head>
+
+<body style="background:#e9f6f7; font-family:Segoe UI, Arial, sans-serif; margin:0; min-height:100vh;">
+
+    <!-- Navbar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 60px; background:white; box-shadow:0 1px 4px rgba(0,0,0,0.07); position:sticky; top:0; z-index:10;">
+        <h2 style="margin:0; color:#2c2c2c; font-size:20px; letter-spacing:0.5px;">📝 Notes</h2>
+        <div style="display:flex; gap:24px; align-items:center;">
+            {% if user.is_authenticated %}
+                <span style="color:#888; font-size:14px;">Hi, {{ user.username }}</span>
+                <a href="/task/new/" style="text-decoration:none; color:#fff; background:#61c1bb; padding:8px 16px; border-radius:8px; font-size:14px; font-weight:500;">+ New Note</a>
+                <form method="POST" action="/logout/" style="display:inline; margin:0; padding:0;">
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; color:#888; font-size:14px; cursor:pointer; padding:0; font-family:Segoe UI, Arial, sans-serif;">Logout</button>
+                </form>
+            {% else %}
+                <a href="/register/" style="text-decoration:none; color:#555; font-size:14px;">Register</a>
+                <a href="/login/" style="text-decoration:none; color:#fff; background:#61c1bb; padding:8px 16px; border-radius:8px; font-size:14px;">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Page Title -->
+    <div style="max-width:800px; margin:40px auto 20px; padding:0 20px;">
+        <h1 style="margin:0 0 5px; color:#2c2c2c; font-size:26px;">Your Notes</h1>
+        <p style="color:#999; margin:0; font-size:14px;">All your notes in one place</p>
+    </div>
+
+    <!-- Divider -->
+    <div style="max-width:800px; margin:0 auto 25px; padding:0 20px;">
+        <hr style="border:none; border-top:1px solid #e4e4e4;">
+    </div>
+
+    <!-- Notes -->
+    <div style="max-width:800px; margin:auto; padding:0 20px 60px;">
+
+        {% for task in tasks %}
+        <div style="background:white; padding:22px 28px; margin-bottom:12px; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border-left:4px solid #61c1bb; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+                <a href="/task/{{ task.id }}/" style="text-decoration:none;">
+                    <h3 style="margin:0 0 6px; color:#2c2c2c; font-size:16px;">{{ task.title }}</h3>
+                </a>
+                <span style="font-size:12px; color:#aaa;">By {{ task.task_manager }}</span>
+            </div>
+            <a href="/task/{{ task.id }}/" style="text-decoration:none; color:#31706c; font-size:13px;">View →</a>
+        </div>
+        {% empty %}
+        <div style="background:white; padding:50px 30px; text-align:center; border-radius:10px; box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+            <p style="color:#aaa; margin:0 0 15px; font-size:16px;">No notes yet!</p>
+            <a href="/task/new/" style="text-decoration:none; color:#fff; background:#61c1bb; padding:10px 20px; border-radius:8px; font-size:14px;">Create your first note</a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

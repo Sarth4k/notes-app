@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Task Detail</title></head>
+<body style="background:#f5f7fa; font-family:Segoe UI, Arial, sans-serif; padding:40px;">
+
+    <div style="max-width:700px; margin:auto; background:white; padding:40px; border-radius:12px; box-shadow:0 3px 12px rgba(0,0,0,0.06);">
+
+        <h1 style="color:#222; margin-bottom:5px;">{{ object.title }}</h1>
+        <p style="color:#888; font-size:13px; margin-bottom:20px;">By: {{ object.task_manager }}</p>
+
+        <hr style="border:none; border-top:1px solid #eee; margin-bottom:20px;">
+
+        <p style="color:#555; line-height:1.8; margin-bottom:30px;">{{ object.content|linebreaks }}</p>
+
+        <div style="display:flex; gap:15px; align-items:center;">
+            <a href="/" style="color:#86ccd4; text-decoration:none;">← Back</a>
+
+            <a href="/task/{{ object.pk }}/update/"
+               style="padding:8px 18px; background:#86ccd4; color:white; border-radius:6px; text-decoration:none;">
+                Update
+            </a>
+
+            <a href="/task/{{ object.pk }}/delete/"
+               style="padding:8px 18px; background:#e74c3c; color:white; border-radius:6px; text-decoration:none;">
+                Delete
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

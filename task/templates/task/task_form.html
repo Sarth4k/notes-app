@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>Add Notes</title></head>
+<body style="background:#f5f7fa; font-family:Segoe UI, Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh; margin:0;">
+
+    <div style="background:white; padding:35px; width:400px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+
+        <h1 style="margin:0 0 25px; color:#222; text-align:center;">
+            {% if object %}
+                Update Notes
+            {% else %}
+                Add Notes
+            {% endif %}
+        </h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="width:100%; padding:12px; background:#86ccd4; color:white; border:none; border-radius:6px; cursor:pointer; font-size:15px; margin-top:10px;">
+                {% if object %}
+                    Update Notes
+                {% else %}
+                    Add Notes
+                {% endif %}
+            </button>
+        </form>
+
+        <p style="text-align:center; margin-top:15px;">
+            <a href="/" style="color:#86ccd4; text-decoration:none;">← Back to Home</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
