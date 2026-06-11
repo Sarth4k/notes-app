@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
+CSRF_TRUSTED_ORIGINS = ['https://notes-app-production-5140.up.railway.app']
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
