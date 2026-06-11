@@ -7,7 +7,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)  # automatically login karo
+            auth_login(request, user)
             return redirect('task-home')
     else:
         form = UserCreationForm()
@@ -16,8 +16,6 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
-        print("IS VALID:", form.is_valid())
-        print("ERRORS:", form.errors)
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
