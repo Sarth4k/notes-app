@@ -25,12 +25,28 @@ SECRET_KEY = 'django-insecure-r!*2_a_xkwul8)3)2ljh(8z-%%x)m*jt*)6ji$#p%wb$3rv%*i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['notes-app-production-5140.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
+
+# CKEditor settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+
+# AWS S3 settings
+AWS_ACCESS_KEY_ID = 'AKIA5QOZPJ6WHJIPOADR'
+AWS_SECRET_ACCESS_KEY = 'amCDDk929khbUqfTo9VS4XQWylolN7C+wDZQjSex'
+AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+AWS_S3_REGION_NAME = 'ap-south-1'
+AWS_S3_FILE_OVERWRITE = False
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'ckeditor',
+    'ckeditor_uploader',
+    'storages',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 from . views import TaskListView,TaskDetailView,TaskCreateView,TaskUpdateView,TaskDeleteView
 from users import views as user_views
@@ -13,4 +13,5 @@ urlpatterns = [
     path('register/',user_views.register,name='task-reg'),
     path('login/',user_views.login,name='task-login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
