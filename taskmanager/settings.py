@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
+from dotenv import load_dotenv
+import os
 from pathlib import Path
-
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,16 +31,43 @@ ALLOWED_HOSTS = ['*']
 
 # CKEditor settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_IMAGE_BACKEND = 'pillow'
+#CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 # AWS S3 settings
-AWS_ACCESS_KEY_ID = 'AKIA5QOZPJ6WHJIPOADR'
-AWS_SECRET_ACCESS_KEY = 'amCDDk929khbUqfTo9VS4XQWylolN7C+wDZQjSex'
-AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = 'ap-south-1'
 AWS_S3_FILE_OVERWRITE = False
+AWS_QUERYSTRING_AUTH = False
+MEDIA_URL = 'https://disubucket.s3.amazonaws.com/'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATIC_URL = 'https://disubucket.s3.amazonaws.com/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'extraPlugins': 'uploadimage',
+        'uploadUrl': '/ckeditor/upload/?responseType=json',
+        'filebrowserUploadUrl': '/ckeditor/upload/?responseType=json',
+    }
+}
+
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3.S3Storage",
+    },
+
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    }
+}
+
+
+
 
 # Application definition
 
