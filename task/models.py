@@ -6,7 +6,12 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Task(models.Model):
     title = models.CharField(max_length=100)
     content = RichTextUploadingField()
-    task_manager = models.ForeignKey(User,on_delete=models.CASCADE)
+    task_manager = models.ForeignKey(
+    User,
+    on_delete=models.CASCADE,
+    null=True,
+    blank=True
+)
     def __str__(self):
         return self.title
     

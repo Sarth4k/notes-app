@@ -42,16 +42,15 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_QUERYSTRING_AUTH = False
 MEDIA_URL = 'https://disubucket.s3.amazonaws.com/'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-STATIC_URL = 'https://disubucket.s3.amazonaws.com/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+#STATIC_URL = 'https://disubucket.s3.amazonaws.com/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 CKEDITOR_CONFIGS = {
     'default': {
         'extraPlugins': 'uploadimage',
         'uploadUrl': '/ckeditor/upload/?responseType=json',
-        'filebrowserUploadUrl': '/ckeditor/upload/?responseType=json',
     }
 }
 
