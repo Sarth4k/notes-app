@@ -77,17 +77,17 @@ REST_FRAMEWORK = {
 }
 
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}'''
 
 
 
 #RDS
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
@@ -96,7 +96,7 @@ DATABASES = {
         'HOST':'database-1.c1q46wqiuurj.ap-south-1.rds.amazonaws.com',
         'PORT': '5432',
     }
-}'''
+}
 
 #JWT CONFIGURATION
 
