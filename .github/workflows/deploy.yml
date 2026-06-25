@@ -15,6 +15,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            sudo git config --global --add safe.directory /home/sarthak/notes-app
             cd /home/sarthak/notes-app
             sudo git fetch origin master
             sudo git reset --hard origin/master
