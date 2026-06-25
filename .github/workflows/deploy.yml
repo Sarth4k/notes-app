@@ -31,13 +31,10 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: sarthak
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            script: |
-            sudo su sarthak
-            cd ..
-            cd /sarthak/notes-app
+            cd /home/ubuntu/notes-app
             git fetch origin master
             git reset --hard origin/master
             source venv/bin/activate
