@@ -35,7 +35,9 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             script: |
-            cd /home/sarthak/notes-app
+            sudo su sarthak
+            cd ..
+            cd /sarthak/notes-app
             git fetch origin master
             git reset --hard origin/master
             source venv/bin/activate
