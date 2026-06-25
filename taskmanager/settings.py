@@ -124,6 +124,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'task',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
